@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset='utf-8'>
+    <title>Calculadora</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='estilo.css'>
+</head>
+<body>
+        <section class="ingresodenum">
+            <h1>INGRESE NUMERO 1:</h1>
+            <input id="n1">
+            <h1>INGRESE NUMERO 2:</h1>
+            <input id="n2">
+        </section>
+        <section class="operadores">
+            <button onclick="sumar()">+</button>
+            <button onclick="restar()">-</button>
+            <button onclick="multiplicar()">*</button>
+            <button onclick="dividir()">/</button>
+        </section>
+        <section class="resultado">
+                <h3>RESULTADO:</h3>
+                <div id="resultado"></div>
+        </section>
+    <script>
+
+        var objNum1 = document.getElementById("n1");
+        var objNum2 = document.getElementById("n2");
+        var objResultado = document.getElementById("resultado");
+
+        function compararConNum(objeto){
+            var flag = true;
+            for (let x = 0; x < (objeto.value).length; x++) {
+                if((objeto.value).charAt(x) !== "0"){
+                    if((objeto.value).charAt(x) !== "1"){
+                        if((objeto.value).charAt(x) !== "2"){
+                            if((objeto.value).charAt(x) !== "3"){
+                                if((objeto.value).charAt(x) !== "4"){
+                                    if((objeto.value).charAt(x) !== "5"){
+                                        if((objeto.value).charAt(x) !== "6"){
+                                            if((objeto.value).charAt(x) !== "7"){
+                                                if((objeto.value).charAt(x) !== "8"){
+                                                    if((objeto.value).charAt(x) !== "9"){
+                                                        console.log((objeto.value).charAt(x));
+                                                        flag = false;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(flag)return true;
+            else return false;
+        }
+
+        function validarIngreso(objN1, objN2){
+
+            if(objN1.value === "" || objN2.value === ""){
+                alert("Ingrese un dato en todas las casillas")
+                return false;
+            }
+
+            if(compararConNum(objN1) && compararConNum(objN2)) return true;
+            else{
+                alert("Solo se pueden ingresar numeros");
+                return false;
+            }
+        }
+
+        function sumar() {
+
+            if(!validarIngreso(objNum1, objNum2)) return;
+
+            var num1 = parseInt(objNum1.value);
+            var num2 = parseInt(objNum2.value);
+
+            objResultado.innerHTML = "<h2>" + (num1 + num2) + "</h2>";
+        }
+
+        function restar() {
+
+            if(!validarIngreso(objNum1, objNum2)) return;
+
+            var num1 = parseInt(objNum1.value);
+            var num2 = parseInt(objNum2.value);
+
+            objResultado.innerHTML = "<h2>" + (num1 - num2) + "</h2>"; 
+        }
+
+        function multiplicar() {
+            
+            if(!validarIngreso(objNum1, objNum2)) return;
+
+            var num1 = parseInt(objNum1.value);
+            var num2 = parseInt(objNum2.value);
+
+            objResultado.innerHTML = "<h2>" + (num1 * num2) + "</h2>"; 
+        }
+
+        function dividir() {
+
+            if(!validarIngreso(objNum1, objNum2)) return;
+
+            var num1 = parseInt(objNum1.value);
+            var num2 = parseInt(objNum2.value);
+
+            objResultado.innerHTML = "<h2>" + (num1 / num2) + "</h2>"; 
+        }
+    </script>
+</body>
+</html>
